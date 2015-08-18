@@ -6,6 +6,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.domain.Film;
+import com.repository.FilmRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/films")
 public class FilmsController {
+
+	@Autowired
+	private FilmRepository filmRepository;
 
 	private static final List<Film> DUMMY_FILMS = new ArrayList<Film>();
 	
@@ -29,12 +34,16 @@ public class FilmsController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Film> getFilms() {
-		return DUMMY_FILMS;
+		//return DUMMY_FILMS;
+		System.out.println("-------------Obteniendo Filmes---------");
+		return (List<Film>) filmRepository.findAll();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public void addFilm(@RequestBody @Valid Film film) {
-		DUMMY_FILMS.add(film);
+		//DUMMY_FILMS.add(film);
+		System.out.println("-------------Guardando Filme---------");
+		filmRepository.save(film);
 	}
 	
 }

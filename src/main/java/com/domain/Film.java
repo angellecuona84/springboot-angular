@@ -1,10 +1,16 @@
 package com.domain;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+@Entity
 public class Film {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 
 	@NotEmpty
 	private String title;
