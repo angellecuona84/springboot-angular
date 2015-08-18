@@ -1,0 +1,22 @@
+<div class="container" ng-controller="FilmsController" ng-init="vm.getFilms()">
+<div class="container" ng-show="vm.films != null">
+    <div class="film-info-bottom" ng-repeat="film in vm.films">
+        <h4><span> {{film.year}} - {{film.title}} - {{film.director}} </span></h4>
+    </div>
+</div>
+
+<div class="form">
+    <label for="title">Título:</label>
+    <input id="title" ng-model="vm.filmes.title" type="text" />
+
+    <label for="year">Año:</label>
+    <input id="year" ng-model="vm.filmes.year" type="number" />
+
+    <label for="director">Director:</label>
+    <input id="director" ng-model="vm.filmes.director" type="text" />
+
+    <button id="addBtn" class="btn" ng-click="vm.addFilm()">Añadir película</button>
+</div>
+
+<h4>{{msg}}</h4>
+</div>
